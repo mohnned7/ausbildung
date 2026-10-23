@@ -16,7 +16,7 @@
   --r:20px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
+html{scroll-padding-top:76px}
 body{font-family:"Alexandria",system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.85;font-size:16px;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;z-index:-1;
   background:radial-gradient(60vw 60vw at 100% -10%,rgba(255,159,28,.18),transparent 60%),
@@ -121,11 +121,21 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
 .totop{position:fixed;left:16px;bottom:16px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#1a1200;border:0;font-size:22px;box-shadow:0 10px 30px -8px var(--gold2);opacity:0;pointer-events:none;transition:.3s}
 .totop.show{opacity:1;pointer-events:auto}
 
-.rv{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
+.view{display:none}
+.view.act{display:block;animation:fd .25s ease}
+@keyframes fd{from{opacity:0}to{opacity:1}}
+.pager{display:flex;gap:10px;margin-top:26px}
+.pager a{flex:1;border:1px solid var(--line);background:var(--bg2);border-radius:16px;padding:12px 14px;color:#fff;font-weight:600;text-align:center;transition:.2s}
+.pager a.nx{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1200;border:0}
+.pager a small{display:block;font-weight:400;font-size:12px;opacity:.75}
+.pager a:hover{transform:translateY(-2px)}
+.menu{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin:30px 0 10px}
+.menu a{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:linear-gradient(160deg,var(--card),var(--bg2));border-radius:18px;padding:16px;color:#fff;font-weight:600;text-align:right;transition:.2s}
+.menu a:hover{border-color:var(--gold);transform:translateY(-2px)}
+.menu a i{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-style:normal;font-weight:800;color:#1a1200;background:linear-gradient(135deg,var(--gold),var(--gold2))}
 
 @media (max-width:700px){
-  .stats{grid-template-columns:1fr 1fr}
+  .stats,.menu{grid-template-columns:1fr 1fr}
   .two,.links{grid-template-columns:1fr}
   section{padding:24px 18px;border-radius:22px}
   .logo span.t{display:none}
@@ -137,8 +147,9 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#"><i class="flag"></i><span class="t">دليل الأوسبيلدونج</span></a>
+    <a class="logo" href="#home"><i class="flag"></i><span class="t">دليل الأوسبيلدونج</span></a>
     <nav class="nav" id="nav">
+      <a href="#home">الرئيسية</a>
       <a href="#what">يعني إيه</a>
       <a href="#req">الشروط</a>
       <a href="#steps">الخطوات</a>
@@ -153,7 +164,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
 
 <main class="wrap">
 
-<div class="hero">
+<div class="view hero" id="home">
   <span class="tag">محدّث أكتوبر 2026 · من مصر لألمانيا</span>
   <h1>دليل الأوسبيلدونج<br>في ألمانيا</h1>
   <p>اتعلم ألماني لحد B1، لاقي شركة تمضي معاك عقد، جهّز ورقك، وقدّم على التأشيرة من القاهرة. كل خطوة هنا بالتفصيل والأرقام.</p>
@@ -163,9 +174,19 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
     <div class="stat"><b>€1,048</b><span>المرتب المطلوب للتأشيرة</span></div>
     <div class="stat"><b>€75</b><span>رسوم التأشيرة</span></div>
   </div>
+  <div class="menu">
+    <a href="#what"><i>1</i>يعني إيه أوسبيلدونج</a>
+    <a href="#req"><i>2</i>الشروط</a>
+    <a href="#steps"><i>3</i>الخطوات</a>
+    <a href="#cost"><i>4</i>المصاريف</a>
+    <a href="#lang"><i>5</i>معهد جوته</a>
+    <a href="#find"><i>6</i>الشركات</a>
+    <a href="#visa"><i>7</i>التأشيرة</a>
+    <a href="#tips"><i>8</i>نصايح</a>
+  </div>
 </div>
 
-<section id="what" class="rv">
+<section id="what" class="view">
   <div class="sh"><div class="num">1</div><h2>يعني إيه أوسبيلدونج؟</h2></div>
   <p class="lead">الأوسبيلدونج (Ausbildung) تدريب مهني مدته من سنتين لـ3 سنين ونص، وغالبًا 3 سنين. بتشتغل في شركة وتاخد مرتب، وبتدرس جزء من الأسبوع في مدرسة مهنية (Berufsschule).</p>
   <p>في الآخر بتاخد شهادة معترف بيها في ألمانيا كلها، وتقدر تفضل تشتغل بيها هناك.</p>
@@ -184,7 +205,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
   <p class="src">المصدر: <a href="https://www.handwerksblatt.de/betriebsfuehrung/mindestausbildungsverguetung-fuer-auszubildende-steigt-2026-auf-724-euro" target="_blank" rel="noopener">Handwerksblatt</a></p>
 </section>
 
-<section id="req" class="rv">
+<section id="req" class="view">
   <div class="sh"><div class="num">2</div><h2>الشروط</h2></div>
   <p>الشروط دي من ورقة السفارة الألمانية في القاهرة (تحديث أغسطس 2026). فيه تأشيرتين:</p>
   <div class="tbl"><table>
@@ -204,7 +225,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
   <p class="src">المصدر: <a href="https://kairo.diplo.de/resource/blob/2696788/06a131acd8f3decec65eed258466fa73/260818-aufnahme-einer-ausbildung-oder-ausbildungsplatzsuche-deu-data.pdf" target="_blank" rel="noopener">ورقة السفارة الألمانية بالقاهرة</a></p>
 </section>
 
-<section id="steps" class="rv">
+<section id="steps" class="view">
   <div class="sh"><div class="num">3</div><h2>الخطوات بالترتيب</h2></div>
   <p>الطريق كله غالبًا بياخد من سنة لسنة ونص. التدريب بيبدأ غالبًا في أغسطس أو سبتمبر، والشركات بتفتح التقديم قبلها بـ12 لـ18 شهر.</p>
   <ol class="steps">
@@ -219,7 +240,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
   </ol>
 </section>
 
-<section id="cost" class="rv">
+<section id="cost" class="view">
   <div class="sh"><div class="num">4</div><h2>المصاريف</h2></div>
   <p class="lead">أكبر مصاريف في مصر هي اللغة: حوالي 46,000 إلى 70,000 جنيه لحد B1 في جوته القاهرة.</p>
   <div class="tbl"><table>
@@ -239,7 +260,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
   <p class="src">المصادر: <a href="https://www.goethe.de/ins/eg/de/sta/kai/kur/all.html" target="_blank" rel="noopener">جوته القاهرة</a> · <a href="https://www.ausbildung-assist.de/blog/en/blocked-account-germany-2026-official-11-904-limit-top-providers" target="_blank" rel="noopener">الحساب المجمّد 2026</a></p>
 </section>
 
-<section id="lang" class="rv">
+<section id="lang" class="view">
   <div class="sh"><div class="num">5</div><h2>الدراسة في معهد جوته</h2></div>
   <p>الكورسات في جوته القاهرة (الدقي) بتبدأ 4 مرات في السنة: <strong>يناير، أبريل، يوليو، أكتوبر</strong>. أول مرة لازم تعمل اختبار تحديد مستوى، وبتحجزه من goetheeg.com.</p>
   <div class="tbl"><table>
@@ -262,7 +283,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
   <p class="src">المصادر: <a href="https://www.goethe.de/ins/eg/de/sta/kai/kur/all.html" target="_blank" rel="noopener">الكورسات</a> · <a href="https://www.goethe.de/ins/eg/de/sta/kai/prf/gzb1.cfm" target="_blank" rel="noopener">امتحان B1</a></p>
 </section>
 
-<section id="find" class="rv">
+<section id="find" class="view">
   <div class="sh"><div class="num">6</div><h2>إزاي تلاقي شركة أو مدرسة</h2></div>
   <p>المواقع الرسمية دي فيها أماكن تدريب حقيقية من شركات ألمانية، والتقديم عليها ببلاش:</p>
   <div class="links">
@@ -284,7 +305,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
   <p class="src">المصدر: <a href="https://www.make-it-in-germany.com/de/studium-ausbildung/ausbildung-in-deutschland/finden" target="_blank" rel="noopener">Make it in Germany</a></p>
 </section>
 
-<section id="visa" class="rv">
+<section id="visa" class="view">
   <div class="sh"><div class="num">7</div><h2>التأشيرة من القاهرة</h2></div>
   <p>بتملا الطلب أونلاين على <strong>VIDEX</strong>، وبعدين تحجز موعد في <strong>TLScontact</strong> (مركزهم في الشيخ زايد) وتروح بنفسك للبصمات والورق. السفارة مش بتحدد مدة للرد.</p>
   <div class="prog"><span id="pt">0 / 11</span><div class="pb"><i id="pbar"></i></div><span class="hint">دوس على الحاجة لما تخلصها</span></div>
@@ -305,7 +326,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
   <p class="src"><a href="https://kairo.diplo.de/resource/blob/2696788/06a131acd8f3decec65eed258466fa73/260818-aufnahme-einer-ausbildung-oder-ausbildungsplatzsuche-deu-data.pdf" target="_blank" rel="noopener">ورقة السفارة الرسمية</a> · <a href="https://visas-de.tlscontact.com/en-us/country/eg/vac/egCAI2de" target="_blank" rel="noopener">حجز TLScontact</a></p>
 </section>
 
-<section id="tips" class="rv">
+<section id="tips" class="view">
   <div class="sh"><div class="num">8</div><h2>تحذيرات ونصايح</h2></div>
   <div class="warn"><div class="ic">⚠️</div><p><strong>احذر من النصب:</strong> التقديم على الشركات والمواقع الرسمية ببلاش. أي حد يضمنلك عقد أو تأشيرة مقابل فلوس كتير احذر منه، لأن قرار التأشيرة في إيد السفارة بس.</p></div>
   <div class="warn"><div class="ic">⛔</div><p><strong>الورق المزور بيضيّع كل حاجة:</strong> الطلب بيترفض، وممكن تتمنع من دخول ألمانيا ودول شينغن.</p></div>
@@ -327,13 +348,21 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 50px}
 <button class="totop" id="totop" aria-label="لفوق">↑</button>
 
 <script>
-// reveal on scroll
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-// active nav
+var order=['home','what','req','steps','cost','lang','find','visa','tips'];
+var names={home:'الرئيسية',what:'يعني إيه',req:'الشروط',steps:'الخطوات',cost:'المصاريف',lang:'معهد جوته',find:'الشركات',visa:'التأشيرة',tips:'نصايح'};
+// pager under each section
+order.slice(1).forEach(function(id,k){var sec=document.getElementById(id),i=k+1,pv=order[i-1],nx=order[i+1];
+  var d=document.createElement('div');d.className='pager';
+  d.innerHTML=(nx?'<a class="nx" href="#'+nx+'"><small>التالي</small>'+names[nx]+' ←</a>':'<a class="nx" href="#home"><small>خلصت</small>الرئيسية</a>')+
+              '<a href="#'+pv+'"><small>السابق</small>→ '+names[pv]+'</a>';
+  sec.appendChild(d)});
 var links=[].slice.call(document.querySelectorAll('#nav a'));
-var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){var on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('on',on);if(on)a.scrollIntoView({block:'nearest',inline:'center'})})}})},{rootMargin:'-45% 0px -50% 0px'});
-document.querySelectorAll('section').forEach(function(s){so.observe(s)});
+function show(){var id=(location.hash||'#home').slice(1);if(order.indexOf(id)<0)id='home';
+  order.forEach(function(v){document.getElementById(v).classList.toggle('act',v===id)});
+  links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)});
+  var on=document.querySelector('#nav a.on');if(on){var n=document.getElementById('nav');n.scrollLeft=on.offsetLeft-n.clientWidth/2+on.clientWidth/2}
+  window.scrollTo(0,0)}
+addEventListener('hashchange',show);show();
 // back to top
 var tt=document.getElementById('totop');
 addEventListener('scroll',function(){tt.classList.toggle('show',scrollY>600)},{passive:true});
